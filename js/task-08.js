@@ -1,21 +1,20 @@
-const form = document.querySelector(".login-form");
-logForm.addEventListener("submit", submit);
+const form = document.querySelector('.login-form');
+form.addEventListener('submit', formSubmit);
 
-function submit (event) {
-    event.preventDefault();
-    const {
-        elements: { email, password }
-      } = event.currentTarget;
-    
-      if (email.value === "" || password.value === "") {
-        alert("Please fill in all the fields!");
-      } else {
-          console.log ( {
-              email : email.value,
-              password : password.value
-          });
+function formSubmit(event) {
+   event.preventDefault();
 
-      }
-      form.reset();
-
-}
+   const formEl = event.currentTarget.elements;
+ 
+  if (formEl.email.value === "" || formEl.password.value === "") {
+   return alert("Будь ласка, заповніть усі поля!");
+ }
+ const email = formEl.email.value;
+ const password = formEl.password.value;
+  const formData = {
+   email, password, 
+  }
+  console.log(formData);
+  formEl.email.value = '';
+  formEl.password.value = '';
+};
